@@ -1,0 +1,84 @@
+<! --
+/**
+* SuiteCRM is a customer relationship management program developed by SalesAgility Ltd.
+* Copyright (C) 2021 SalesAgility Ltd.
+*
+* This program is free software; you can redistribute it and/or modify it under
+* the terms of the GNU Affero General Public License version 3 as published by the
+* Free Software Foundation with the addition of the following permission added
+* to Section 15 as permitted in Section 7(a): FOR ANY PART OF THE COVERED WORK
+* IN WHICH THE COPYRIGHT IS OWNED BY SALESAGILITY, SALESAGILITY DISCLAIMS THE
+* WARRANTY OF NON INFRINGEMENT OF THIRD PARTY RIGHTS.
+*
+* This program is distributed in the hope that it will be useful, but WITHOUT
+* ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+* FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more
+* details.
+*
+* You should have received a copy of the GNU Affero General Public License
+* along with this program.  If not, see http://www.gnu.org/licenses.
+*
+* In accordance with Section 7(b) of the GNU Affero General Public License
+* version 3, these Appropriate Legal Notices must retain the display of the
+* "Supercharged by SuiteCRM" logo. If the display of the logos is not reasonably
+* feasible for technical reasons, the Appropriate Legal Notices must display
+* the words "Supercharged by SuiteCRM".
+*/
+-->
+<ng-container>
+
+    <span data-target=".navbar-collapse" data-toggle="collapse" *ngIf="!item.isGroupedMenu">
+        <a data-custom="example10" class="top-nav-link nav-link-grouped dropdown-toggle active" data-toggle="dropdown">
+            <scrm-image [image]="item.link.label"></scrm-image>
+            {{ item.link.label }}
+        </a>
+    </span>
+    
+
+    <ul id="myUL" class="navbar-nav grouped" *ngIf="item.isGroupedMenu">
+
+        <li data-custom="example" onclick="hideside()" id="myLI" class="top-nav nav-item dropdown main-grouped active">
+            <scrm-menu-item [item]="item"></scrm-menu-item>
+        </li>
+    </ul>
+    <div class="tmenu">
+    <ul id="myUL" [ngbCollapse]="subNavCollapse"
+        (click)="hideDropdown()"
+        aria-labelledby="navbarDropdownMenuLink"
+        *ngIf="showDropdown"
+        class="dropdown-menu main"
+    >
+        <li onclick="hideside()" id="myLI" *ngFor="let sub of item.submenu" class="nav-item subbg parentm dropdown-submenu submenu">
+
+            <scrm-menu-item-link [class]="{
+                                    'sub-nav-link': true,
+                                    'nav-link': true,
+                                    'action-link': true,
+                                    'dropdown-item': sub.submenu.length,
+                                    'dropdown-toggle': sub.submenu.length
+                                  }"
+                                 [link]="sub.link">
+            </scrm-menu-item-link>
+
+            <ul id="myUL" *ngIf="sub.submenu.length"
+                [class.rounded-0]="sub.submenu && sub.submenu.length === 1"
+                class="dropdown-menu ttsmenu submenu"
+                (click)="hideDropdown()"
+            >
+
+                <li onclick="hideside()" id="myLI" *ngFor="let subitem of sub.submenu" class="nav-item subbg">
+
+                    <scrm-menu-item-link [class]="'submenu-nav-link parentm nav-link action-link'"
+                                         [icon]="subitem.icon"
+                                         [link]="subitem.link">
+                    </scrm-menu-item-link>
+                </li>
+                <ng-container *ngIf="sub && sub.module">
+                    <scrm-sub-menu-recently-viewed [module]="sub.module"></scrm-sub-menu-recently-viewed>
+                    <scrm-sub-menu-favorites [module]="sub.module"></scrm-sub-menu-favorites>
+                </ng-container>
+            </ul>
+        </li>
+    </ul>
+</div>
+</ng-container>
