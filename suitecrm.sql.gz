@@ -1,0 +1,859 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1deb5ubuntu1
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost:3306
+-- Generation Time: Aug 13, 2024 at 11:03 AM
+-- Server version: 8.0.37-0ubuntu0.22.04.3
+-- PHP Version: 8.3.9
+
+SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `shivcrm`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `accounts` (
+  `id` char(36) NOT NULL,
+  `name` varchar(150) DEFAULT NULL,
+  `date_entered` datetime DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `modified_user_id` char(36) DEFAULT NULL,
+  `created_by` char(36) DEFAULT NULL,
+  `description` text,
+  `deleted` tinyint(1) DEFAULT '0',
+  `assigned_user_id` char(36) DEFAULT NULL,
+  `account_type` varchar(50) DEFAULT NULL,
+  `industry` varchar(50) DEFAULT NULL,
+  `annual_revenue` varchar(100) DEFAULT NULL,
+  `phone_fax` varchar(100) DEFAULT NULL,
+  `billing_address_street` varchar(150) DEFAULT NULL,
+  `billing_address_city` varchar(100) DEFAULT NULL,
+  `billing_address_state` varchar(100) DEFAULT NULL,
+  `billing_address_postalcode` varchar(20) DEFAULT NULL,
+  `billing_address_country` varchar(255) DEFAULT NULL,
+  `rating` varchar(100) DEFAULT NULL,
+  `phone_office` varchar(100) DEFAULT NULL,
+  `phone_alternate` varchar(100) DEFAULT NULL,
+  `website` varchar(255) DEFAULT NULL,
+  `ownership` varchar(100) DEFAULT NULL,
+  `employees` varchar(10) DEFAULT NULL,
+  `ticker_symbol` varchar(10) DEFAULT NULL,
+  `shipping_address_street` varchar(150) DEFAULT NULL,
+  `shipping_address_city` varchar(100) DEFAULT NULL,
+  `shipping_address_state` varchar(100) DEFAULT NULL,
+  `shipping_address_postalcode` varchar(20) DEFAULT NULL,
+  `shipping_address_country` varchar(255) DEFAULT NULL,
+  `parent_id` char(36) DEFAULT NULL,
+  `sic_code` varchar(10) DEFAULT NULL,
+  `campaign_id` char(36) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `accounts`:
+--
+
+--
+-- Dumping data for table `accounts`
+--
+
+INSERT INTO `accounts` (`id`, `name`, `date_entered`, `date_modified`, `modified_user_id`, `created_by`, `description`, `deleted`, `assigned_user_id`, `account_type`, `industry`, `annual_revenue`, `phone_fax`, `billing_address_street`, `billing_address_city`, `billing_address_state`, `billing_address_postalcode`, `billing_address_country`, `rating`, `phone_office`, `phone_alternate`, `website`, `ownership`, `employees`, `ticker_symbol`, `shipping_address_street`, `shipping_address_city`, `shipping_address_state`, `shipping_address_postalcode`, `shipping_address_country`, `parent_id`, `sic_code`, `campaign_id`) VALUES
+('42194b72-08a9-80ca-c0ad-66a4d234467d', 'ddsds', '2024-07-02 10:58:37', '2024-07-27 10:58:37', '1', '1', '', 0, '1', '', '', '', '', '', '', '', '', '', NULL, '', '', '', NULL, '', NULL, '', '', '', '', '', NULL, NULL, NULL),
+('d5dabe3a-74b2-95e1-c94a-66a4d20a3f56', 'ffrEDFSDFSD', '2024-07-27 10:58:57', '2024-07-27 10:58:57', '1', '1', '', 0, '1', '', '', '', '', '', '', '', '', '', NULL, '', '', '', NULL, '', NULL, '', '', '', '', '', NULL, NULL, NULL),
+('d6a8cb98-aed3-5809-e5fb-66a4d2ee0506', 'fsfsdfdf', '2024-07-31 10:58:51', '2024-07-27 10:58:51', '1', '1', '', 0, '1', '', '', '', '', '', '', '', '', '', NULL, '', '', 'fdsff', NULL, '', NULL, '', '', '', '', '', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts_audit`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `accounts_audit` (
+  `id` char(36) NOT NULL,
+  `parent_id` char(36) NOT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `created_by` varchar(36) DEFAULT NULL,
+  `field_name` varchar(100) DEFAULT NULL,
+  `data_type` varchar(100) DEFAULT NULL,
+  `before_value_string` varchar(255) DEFAULT NULL,
+  `after_value_string` varchar(255) DEFAULT NULL,
+  `before_value_text` text,
+  `after_value_text` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `accounts_audit`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts_bugs`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `accounts_bugs` (
+  `id` varchar(36) NOT NULL,
+  `account_id` varchar(36) DEFAULT NULL,
+  `bug_id` varchar(36) DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `accounts_bugs`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts_cases`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `accounts_cases` (
+  `id` varchar(36) NOT NULL,
+  `account_id` varchar(36) DEFAULT NULL,
+  `case_id` varchar(36) DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `accounts_cases`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts_contacts`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `accounts_contacts` (
+  `id` varchar(36) NOT NULL,
+  `contact_id` varchar(36) DEFAULT NULL,
+  `account_id` varchar(36) DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `accounts_contacts`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts_cstm`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `accounts_cstm` (
+  `id_c` char(36) NOT NULL,
+  `jjwg_maps_lng_c` float(11,8) DEFAULT '0.00000000',
+  `jjwg_maps_lat_c` float(10,8) DEFAULT '0.00000000',
+  `jjwg_maps_geocode_status_c` varchar(255) DEFAULT NULL,
+  `jjwg_maps_address_c` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `accounts_cstm`:
+--
+
+--
+-- Dumping data for table `accounts_cstm`
+--
+
+INSERT INTO `accounts_cstm` (`id_c`, `jjwg_maps_lng_c`, `jjwg_maps_lat_c`, `jjwg_maps_geocode_status_c`, `jjwg_maps_address_c`) VALUES
+('42194b72-08a9-80ca-c0ad-66a4d234467d', 0.00000000, 0.00000000, NULL, NULL),
+('d5dabe3a-74b2-95e1-c94a-66a4d20a3f56', 0.00000000, 0.00000000, NULL, NULL),
+('d6a8cb98-aed3-5809-e5fb-66a4d2ee0506', 0.00000000, 0.00000000, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accounts_opportunities`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `accounts_opportunities` (
+  `id` varchar(36) NOT NULL,
+  `opportunity_id` varchar(36) DEFAULT NULL,
+  `account_id` varchar(36) DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `accounts_opportunities`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `acl_actions`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `acl_actions` (
+  `id` char(36) NOT NULL,
+  `date_entered` datetime DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `modified_user_id` char(36) DEFAULT NULL,
+  `created_by` char(36) DEFAULT NULL,
+  `name` varchar(150) DEFAULT NULL,
+  `category` varchar(100) DEFAULT NULL,
+  `acltype` varchar(100) DEFAULT NULL,
+  `aclaccess` int DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `acl_actions`:
+--
+
+--
+-- Dumping data for table `acl_actions`
+--
+
+INSERT INTO `acl_actions` (`id`, `date_entered`, `date_modified`, `modified_user_id`, `created_by`, `name`, `category`, `acltype`, `aclaccess`, `deleted`) VALUES
+('1016b7f1-3aac-bdb7-838e-66a497a72308', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Accounts', 'module', 90, 0),
+('1023d35c-8ee2-6bef-eca9-66a49789b9ff', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Calls_Reschedule', 'module', 90, 0),
+('102ed7e9-d1b1-eea3-349e-66a497d1175f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Calls', 'module', 90, 0),
+('10b3c65d-9d42-d475-576e-66a497c96ddf', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'SurveyQuestionResponses', 'module', 90, 0),
+('10e63e26-6262-6b13-7740-66a49781ed60', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'ExternalOAuthProvider', 'module', 90, 0),
+('11265f1b-9b8b-9f6e-299d-66a497196711', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Prospects', 'module', 89, 0),
+('115d24a0-3134-38af-2ad1-66a497b1350f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOS_Quotes', 'module', 89, 0),
+('1188dd34-116b-37f1-9077-66a497855bf7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOK_Knowledge_Base_Categories', 'module', 90, 0),
+('1237cdeb-e879-a798-1d8b-66a4975dac80', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOS_Invoices', 'module', 90, 0),
+('12b90b50-fd4a-c38e-d5d5-66a497e279bd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Calls_Reschedule', 'module', 90, 0),
+('139d41e3-76da-ca5a-9cc8-66a4974bb3a0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Accounts', 'module', 90, 0),
+('13f561fe-0cc3-eb55-71e3-66a49710bec5', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Calls', 'module', 90, 0),
+('1476c85d-5045-5ecc-db8a-66a497dca58a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Calls_Reschedule', 'module', 90, 0),
+('14c11541-f5f9-cadc-d4db-66a497ebed55', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Prospects', 'module', 90, 0),
+('14de183a-be1d-4857-5258-66a497dc5473', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'SurveyQuestionResponses', 'module', 90, 0),
+('15519cf9-b508-cd27-54b3-66a497c4a6a1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOS_Quotes', 'module', 90, 0),
+('157e4aa8-5669-aa06-9d14-66a497774177', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOS_Invoices', 'module', 90, 0),
+('15925573-0bb0-9a5e-d246-66a4976f199e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'ExternalOAuthProvider', 'module', 90, 0),
+('162f1ef8-bbd2-caaa-2c62-66a497dc0302', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Leads', 'module', 89, 0),
+('1650b917-7bbc-a397-2271-66a49762fccb', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Alerts', 'module', 89, 0),
+('165d8ed3-6bcf-e84b-fedb-66a497d93823', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOK_Knowledge_Base_Categories', 'module', 90, 0),
+('171d2223-6b33-f277-1fbb-66a4976ac439', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Calls', 'module', 90, 0),
+('1747c3a1-8274-4b75-e748-66a497594efa', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Accounts', 'module', 90, 0),
+('184fe7ad-b030-203c-6f57-66a4976de6b7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Prospects', 'module', 90, 0),
+('18ddf41f-a299-bed1-7fbd-66a4976c7d53', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOS_Quotes', 'module', 90, 0),
+('193c52c3-2981-06d5-1f0e-66a497939c1b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Leads', 'module', 90, 0),
+('195b478c-2da5-176b-ad30-66a49712076f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOP_Case_Updates', 'module', 89, 0),
+('198ccbe2-2725-b6f3-6740-66a49734a1b6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Calls', 'module', 90, 0),
+('1993ade5-987f-0134-ca31-66a49786ef04', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Alerts', 'module', 90, 0),
+('199885c9-1860-f6cb-4f85-66a4971d9a1d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOK_Knowledge_Base_Categories', 'module', 90, 0),
+('19a4e8ca-f8e2-9061-bb3b-66a497d0b5bf', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'ExternalOAuthProvider', 'module', 90, 0),
+('1a105c93-3886-0387-7825-66a497597dce', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Calls_Reschedule', 'module', 90, 0),
+('1a3b2564-9d24-d9a8-7258-66a497e6522f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'SurveyQuestionResponses', 'module', 90, 0),
+('1b5dd0d5-507d-6810-88ad-66a497715832', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Prospects', 'module', 90, 0),
+('1c27b7d3-9034-79f5-b326-66a497012793', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOS_Quotes', 'module', 90, 0),
+('1c35391c-c152-cbcc-cf4a-66a497bcb5a2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Calls', 'module', 90, 0),
+('1c54d46e-4f41-3751-eddc-66a4977b423f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOP_Case_Updates', 'module', 90, 0),
+('1cdbcd77-2466-ec84-02b7-66a497e2a19c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Leads', 'module', 90, 0),
+('1cf3d15f-7bdf-d31e-160b-66a4976d960c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOK_Knowledge_Base_Categories', 'module', 90, 0),
+('1cf40933-f098-85a0-5678-66a49773370a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Alerts', 'module', 90, 0),
+('1ddb8aa4-965b-b533-f7f5-66a49738547f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Prospects', 'module', 90, 0),
+('1e5c3cd4-a6d6-5875-32d1-66a497b979b3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'ExternalOAuthProvider', 'module', 90, 0),
+('1f15c04d-f079-a28f-987b-66a497b0e80b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOS_Quotes', 'module', 90, 0),
+('1f399a04-64e9-0206-a30c-66a497b60fe3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOP_Case_Updates', 'module', 90, 0),
+('1fab2dee-490e-6726-8a37-66a49765d961', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Calls_Reschedule', 'module', 90, 0),
+('1fc576b4-aad7-5817-3b05-66a49782ab88', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'SurveyQuestionResponses', 'module', 90, 0),
+('2078100c-f3e5-f24f-9fcc-66a49799d563', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Leads', 'module', 90, 0),
+('208ffd78-b72e-dc61-9c3e-66a497461917', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Alerts', 'module', 90, 0),
+('211afe02-137f-a987-f2cc-66a4970d7367', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOK_Knowledge_Base_Categories', 'module', 90, 0),
+('211db468-6ec1-0571-1021-66a4971090a4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Prospects', 'module', 90, 0),
+('214048d7-c50d-a96f-383c-66a49730764e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'EAPM', 'module', 89, 0),
+('21b52265-e95e-6e94-bd81-66a497681277', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOP_Case_Updates', 'module', 90, 0),
+('22372468-7bbb-0df2-eb19-66a497fc5db1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOS_Quotes', 'module', 90, 0),
+('23cfee55-6d84-3864-600a-66a49742de42', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Leads', 'module', 90, 0),
+('245e7896-1547-17b5-fee1-66a49723697c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Alerts', 'module', 90, 0),
+('248732ce-6fbb-59bd-67af-66a497fde5c0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Prospects', 'module', 90, 0),
+('24a0fc0c-90a2-8f40-131a-66a49742b9be', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOK_Knowledge_Base_Categories', 'module', 90, 0),
+('24be2904-5705-b619-30ca-66a49727a1aa', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'SurveyQuestionResponses', 'module', 90, 0),
+('2513416a-a8c6-3136-9e7f-66a497c5fadd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOP_Case_Updates', 'module', 90, 0),
+('253e8e80-efc5-39be-c5f5-66a497a57c09', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'EAPM', 'module', 90, 0),
+('25ba960d-6fdf-343c-cbf0-66a497b1e1b9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Project', 'module', 89, 0),
+('261c5c67-16f6-6ee3-6311-66a49716e1e2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOS_Quotes', 'module', 90, 0),
+('27824dfd-269d-dc68-4840-66a497936030', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Leads', 'module', 90, 0),
+('27f70401-068c-702f-425f-66a497637b14', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOP_Case_Updates', 'module', 90, 0),
+('2817549f-eab8-e921-710f-66a497e22716', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Prospects', 'module', 90, 0),
+('282a33e7-edd1-a487-e6ea-66a497a0eda8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Alerts', 'module', 90, 0),
+('2908c2a3-278a-08e1-6737-66a4974b238a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Project', 'module', 90, 0),
+('2938f886-a3aa-772e-2d27-66a497e0ef49', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'SurveyQuestionResponses', 'module', 90, 0),
+('29a3625c-6392-e907-74cf-66a497c52905', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOS_Quotes', 'module', 90, 0),
+('29b1f594-1366-587d-01da-66a4975d1b28', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'EAPM', 'module', 90, 0),
+('2b00d869-368b-1735-c1ea-66a497538e68', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOP_Case_Updates', 'module', 90, 0),
+('2b9ba57e-2e62-543f-b3bd-66a497aad4d7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Alerts', 'module', 90, 0),
+('2b9d426b-28de-09e9-1864-66a497bd7538', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'jjwg_Markers', 'module', 89, 0),
+('2c0669aa-6bbb-4c1c-f13a-66a497f7450f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Leads', 'module', 90, 0),
+('2d064824-2a77-7007-9e55-66a497b6fb70', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Project', 'module', 90, 0),
+('2d9dd175-660f-55b7-b6d7-66a4973a6d93', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOP_Case_Updates', 'module', 90, 0),
+('2e7c8d9e-0569-57af-7770-66a4979db1fd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'EAPM', 'module', 90, 0),
+('2ec2beba-bfa8-ece4-7cd4-66a497462ea6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'SurveyQuestionResponses', 'module', 90, 0),
+('2f24c8fe-5124-1477-a04b-66a4978e8658', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Alerts', 'module', 90, 0),
+('2f8598c3-ffd2-46ac-d5b3-66a497518cc9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'jjwg_Markers', 'module', 90, 0),
+('2fc3a9b4-002c-df9d-7b27-66a497be22fc', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Leads', 'module', 90, 0),
+('30b43292-8b42-478b-dfb7-66a49707ae89', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Project', 'module', 90, 0),
+('31135eb6-0eb3-b380-87e7-66a4978b10ac', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'TemplateSectionLine', 'module', 89, 0),
+('32e0c1f5-9106-38ea-812e-66a4976424c9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'EAPM', 'module', 90, 0),
+('33139edf-b648-949c-31d2-66a49742f030', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Emails', 'module', 89, 0),
+('344e7ed9-ca64-2c5d-1ccc-66a497c5358f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Project', 'module', 90, 0),
+('34b5321d-26fb-1cc5-4dc5-66a497cb0e75', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'jjwg_Markers', 'module', 90, 0),
+('34cadaf6-3f11-0451-1116-66a497e1338b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'TemplateSectionLine', 'module', 90, 0),
+('36682483-c0b7-eb6a-b92e-66a497fd61d3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Emails', 'module', 90, 0),
+('37b6fae0-e017-7dc5-27f3-66a497c11fbd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOS_PDF_Templates', 'module', 89, 0),
+('37bd55a1-7ef3-7c53-423b-66a4974777d8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Project', 'module', 90, 0),
+('37ef646d-5d64-dbf1-3dc8-66a497c81ce9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'EAPM', 'module', 90, 0),
+('39538da5-c21e-7ce7-b324-66a4972b7605', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Emails', 'module', 90, 0),
+('3960935a-6923-b1d9-63d4-66a49795282a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'jjwg_Markers', 'module', 90, 0),
+('39e34e6b-1ee4-c430-3fb5-66a497b46ead', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'TemplateSectionLine', 'module', 90, 0),
+('3a3f8d5e-e0ca-f1f4-d030-66a497660d67', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Project', 'module', 90, 0),
+('3b93623b-86a7-860c-af54-66a4975b43d1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOS_PDF_Templates', 'module', 90, 0),
+('3bbd40e6-8918-d103-f5f0-66a4972b723e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOK_KnowledgeBase', 'module', 89, 0),
+('3c24ee04-ef9c-2c74-eb60-66a497b01cc4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'EAPM', 'module', 90, 0),
+('3cfa98f8-250d-b88f-a1ca-66a497ad4fc2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Emails', 'module', 90, 0),
+('3d2996a3-3fda-3ccd-03f2-66a497241e25', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'jjwg_Markers', 'module', 90, 0),
+('3df1642b-61d6-4615-eb56-66a497f3638a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Project', 'module', 90, 0),
+('3e590152-0392-80f8-0356-66a4971365bd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOS_Invoices', 'module', 89, 0),
+('3e8001a8-da53-9977-a81b-66a4970ad0dd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOK_KnowledgeBase', 'module', 90, 0),
+('3ed25948-2980-6322-a43b-66a4976ccd3e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOS_PDF_Templates', 'module', 90, 0),
+('3ef47fc6-7582-662d-e203-66a497eeffd7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'TemplateSectionLine', 'module', 90, 0),
+('3f9909fa-83df-eb88-a05d-66a497d59853', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'jjwg_Maps', 'module', 90, 0),
+('40330266-5fad-ce8d-0e12-66a497a44c6f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'EAPM', 'module', 90, 0),
+('406a7ca6-a505-90b7-8668-66a4970a9498', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Emails', 'module', 90, 0),
+('40d4bbc3-90e1-76ec-ebb5-66a49709d5b3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'SecurityGroups', 'module', 89, 0),
+('41007a1e-dcf3-73c8-9d29-66a497755b44', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'jjwg_Markers', 'module', 90, 0),
+('4184ff51-40e1-012e-b732-66a4971317c2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOK_KnowledgeBase', 'module', 90, 0),
+('4269fa71-377c-4d7c-83e9-66a497f80f18', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOS_PDF_Templates', 'module', 90, 0),
+('42d577e8-b6e7-c9d3-23f4-66a497e549b8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'TemplateSectionLine', 'module', 90, 0),
+('43a00ccf-91af-a822-5d37-66a4975be0f0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Accounts', 'module', 90, 0),
+('43acb4a9-4a73-1e1e-cff9-66a4973cd5b8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Emails', 'module', 90, 0),
+('448c3327-46cb-01d6-5276-66a49779044a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOK_KnowledgeBase', 'module', 90, 0),
+('44c8186d-fb67-6413-bd6d-66a49787614b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'SecurityGroups', 'module', 90, 0),
+('44ced1f1-ceff-8c8f-d7bb-66a4977564b1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'EmailMarketing', 'module', 89, 0),
+('45495614-4249-9cf4-1eab-66a4971db236', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'jjwg_Markers', 'module', 90, 0),
+('45ff3345-d37d-7059-a66f-66a497d09c2a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOS_PDF_Templates', 'module', 90, 0),
+('468b0df7-e723-495c-5400-66a497433d6d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'TemplateSectionLine', 'module', 90, 0),
+('46c384f9-48c6-6f41-bddf-66a497c76229', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Emails', 'module', 90, 0),
+('46c7b61e-1dea-82bb-f60e-66a4978aba33', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Opportunities', 'module', 89, 0),
+('47cdaee2-df06-c99c-dbdf-66a49797e8e4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOK_KnowledgeBase', 'module', 90, 0),
+('483089b1-4f66-712a-5486-66a497740c1c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'EmailMarketing', 'module', 90, 0),
+('48759f6e-315c-9b6f-a93e-66a497f6f054', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOR_Reports', 'module', 89, 0),
+('497ba396-6b94-33d9-b5fb-66a4974ab9ff', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'SecurityGroups', 'module', 90, 0),
+('49918392-efc5-a065-fe45-66a4979cf853', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Opportunities', 'module', 90, 0),
+('49b1f7c7-5771-06c6-18d7-66a49733a476', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'jjwg_Markers', 'module', 90, 0),
+('49bc7f3f-131c-5f1c-7e94-66a4976862e9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOS_PDF_Templates', 'module', 90, 0),
+('4a16cd1e-3f5d-013f-0606-66a4977f2fb2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Emails', 'module', 90, 0),
+('4a4a052f-f1c8-e07f-1c26-66a497858cec', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Accounts', 'module', 90, 0),
+('4a544761-f487-f35b-c855-66a4975b8d90', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Documents', 'module', 89, 0),
+('4af77365-4e6e-9cc8-b623-66a497f84c6d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'TemplateSectionLine', 'module', 90, 0),
+('4b152a61-d856-2b59-0576-66a4973d8b13', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOR_Reports', 'module', 90, 0),
+('4b3ef252-bf7b-693d-722f-66a497745ac4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'EmailMarketing', 'module', 90, 0),
+('4bf395c5-6b7b-6740-a3a4-66a497797a0c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOK_KnowledgeBase', 'module', 90, 0),
+('4d52a95e-310c-99cd-9543-66a497e95393', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Opportunities', 'module', 90, 0),
+('4d5825d8-f190-e13b-77ea-66a497585ac3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'SecurityGroups', 'module', 90, 0),
+('4d8597f3-fc3f-b31a-f6fc-66a49771c14b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOR_Reports', 'module', 90, 0),
+('4d9fa3a0-4fda-a050-22bb-66a497b96b66', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOS_PDF_Templates', 'module', 90, 0),
+('4e153e42-352c-ab4a-e1ea-66a497b00127', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Documents', 'module', 90, 0),
+('4e71975f-4bd1-d652-52a3-66a497d2a569', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'EmailMarketing', 'module', 90, 0),
+('4ec479d4-d764-b93d-255f-66a4972b0e65', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOK_KnowledgeBase', 'module', 90, 0),
+('4f1b06c1-e31d-0eb2-02cc-66a4973cd7e0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Calls_Reschedule', 'module', 90, 0),
+('4fd880d5-b0e7-272c-8d2c-66a4978557a9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'SurveyQuestions', 'module', 89, 0),
+('4ff0009b-5996-87e1-359a-66a497189bca', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'TemplateSectionLine', 'module', 90, 0),
+('501a1d37-1215-77cc-a921-66a4972b001a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOR_Reports', 'module', 90, 0),
+('50e310be-4416-501f-fe8f-66a4979c438c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOS_PDF_Templates', 'module', 90, 0),
+('513ae186-9aaf-9c39-5a45-66a497552cd9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOK_KnowledgeBase', 'module', 90, 0),
+('51420cda-fa9b-6c7c-9c6b-66a4970f7b71', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Opportunities', 'module', 90, 0),
+('51499b59-5acb-1197-01ee-66a4970ccc78', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'EmailMarketing', 'module', 90, 0),
+('51c4fde0-ee2a-cb88-e6ef-66a497183c6f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'SecurityGroups', 'module', 90, 0),
+('51ca5280-ce4a-032c-ebcf-66a4973a6d49', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Documents', 'module', 90, 0),
+('52cc9bc9-0910-b3a1-5ccd-66a4971d8677', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOR_Reports', 'module', 90, 0),
+('54472a66-54fa-5cfd-929a-66a497d526d4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'SurveyQuestions', 'module', 90, 0),
+('548d1fb4-589d-1c52-3208-66a4970e324a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'EmailMarketing', 'module', 90, 0),
+('54c8aadd-694c-97af-c55d-66a497e184c4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Opportunities', 'module', 90, 0),
+('55a31a4f-a038-2c83-04b1-66a4975a801e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Documents', 'module', 90, 0),
+('56277638-c704-b105-a193-66a49740dfa6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'ProjectTask', 'module', 89, 0),
+('56656a91-c333-a439-1bbe-66a4977e5ee1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOR_Reports', 'module', 90, 0),
+('567aa2c0-1af2-be7e-a711-66a49722a264', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'SecurityGroups', 'module', 90, 0),
+('576cb5b0-ad90-0d0f-eadd-66a49785f656', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'EmailMarketing', 'module', 90, 0),
+('583a2870-fcb5-4487-9e49-66a49764ecc6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Opportunities', 'module', 90, 0),
+('59001576-7816-859a-aae6-66a497c9aea8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Documents', 'module', 90, 0),
+('590f068e-47e3-4dc7-efd9-66a4978afe4f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'SurveyQuestions', 'module', 90, 0),
+('59c853f5-5c1b-4223-0bfe-66a497e52d61', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOR_Reports', 'module', 90, 0),
+('59e0839f-e1be-039e-bbbb-66a49708ce95', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'ProjectTask', 'module', 90, 0),
+('5ac309f0-6f6c-a3b0-7a6d-66a49798f1d4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'EmailMarketing', 'module', 90, 0),
+('5b5ebc08-fa30-403d-5077-66a497f11c54', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'SecurityGroups', 'module', 90, 0),
+('5be2bd13-981e-4dad-a42e-66a497df390f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Opportunities', 'module', 90, 0),
+('5c272705-6554-c49d-4e17-66a497940db7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Documents', 'module', 90, 0),
+('5cab880c-6fed-e769-9ea5-66a497b8ec15', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOW_WorkFlow', 'module', 89, 0),
+('5d04ddda-c884-64b4-db74-66a497db5912', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOR_Reports', 'module', 90, 0),
+('5d426848-4a74-1f4e-8abf-66a4973daf5b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'SurveyQuestions', 'module', 90, 0),
+('5dbc7266-37c2-b8bd-5291-66a49772c3f0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'ProjectTask', 'module', 90, 0),
+('5ecd358e-7d11-7690-b654-66a497386c31', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Documents', 'module', 90, 0),
+('5f57db4e-eab3-d2ac-aae9-66a49703085a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Opportunities', 'module', 90, 0),
+('5fe0e1d0-1cca-8ff0-7baf-66a497c4fbe9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'SecurityGroups', 'module', 90, 0),
+('6072c70a-8cc5-5620-c9a0-66a497f82ddc', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Cases', 'module', 89, 0),
+('60bddd77-a33f-cec7-74ee-66a4976766d7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOW_WorkFlow', 'module', 90, 0),
+('61a57238-7ae9-5876-30eb-66a497cab0ad', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'ProjectTask', 'module', 90, 0),
+('61ff3560-9a56-6810-77c5-66a497a52216', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Documents', 'module', 90, 0),
+('624c5116-1e17-3575-eaac-66a497fb70ac', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'SurveyQuestions', 'module', 90, 0),
+('640f0488-e543-f39a-53a6-66a497ad63a1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOS_Invoices', 'module', 90, 0),
+('646ed7fa-4c06-f03f-ffc0-66a49775f78a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOW_WorkFlow', 'module', 90, 0),
+('64a6780c-8f1c-acce-70f1-66a49771cffb', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Cases', 'module', 90, 0),
+('64ce2db2-c6a2-71e8-599b-66a49744a998', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'ProjectTask', 'module', 90, 0),
+('666d0adb-495c-1806-13b4-66a49795f265', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'SurveyQuestions', 'module', 90, 0),
+('673c487d-aaf4-ad67-36b4-66a497d32987', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'ProjectTask', 'module', 90, 0),
+('67700773-bc12-328e-bfe7-66a497070b98', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'ExternalOAuthProvider', 'module', 90, 0),
+('680087f5-a6f6-65d9-185f-66a4972aa4ee', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Cases', 'module', 90, 0),
+('69523123-c25f-634b-9f83-66a4978f1a4a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Meetings', 'module', 89, 0),
+('69afe742-d856-e70d-2a16-66a4978a7feb', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOW_WorkFlow', 'module', 90, 0),
+('69f418ae-1e02-f992-fedd-66a4973c7fa9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'ProjectTask', 'module', 90, 0),
+('6b7eed86-1fcb-2a1c-e292-66a497653bdd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOS_Product_Categories', 'module', 89, 0),
+('6b89cd95-fadf-e15a-2eb8-66a497999489', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'SurveyQuestions', 'module', 90, 0),
+('6c3cc98a-ff82-5699-2959-66a497aa57aa', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Cases', 'module', 90, 0),
+('6ca805da-9bcf-ebbc-c60c-66a497621199', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Meetings', 'module', 90, 0),
+('6cfebbee-b7ae-e186-06d6-66a49756d3d5', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOW_WorkFlow', 'module', 90, 0),
+('6d8c07b1-2237-79fa-533e-66a4978c1c7a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'ProjectTask', 'module', 90, 0),
+('6dfd31ef-3d89-6798-4b25-66a49707fd7a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOS_Product_Categories', 'module', 90, 0),
+('6e217adb-088e-74a5-c720-66a4974d0a2f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'jjwg_Areas', 'module', 89, 0),
+('6f200e59-86c7-340f-8e13-66a4974667c3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOK_Knowledge_Base_Categories', 'module', 89, 0),
+('6f88f1d3-43a2-075b-2220-66a497c55c27', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Meetings', 'module', 90, 0),
+('6f969031-85fb-5e40-3fc1-66a497efb18f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOW_WorkFlow', 'module', 90, 0),
+('6fa7ed94-d588-07f4-6bba-66a497435332', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Cases', 'module', 90, 0),
+('7028e2d3-507f-da2d-709d-66a497dd2d24', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'SurveyQuestions', 'module', 90, 0),
+('7113a9a3-6baf-4484-9ae3-66a497ae7779', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOS_Product_Categories', 'module', 90, 0),
+('72ea9321-1920-cb61-0886-66a497effe68', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Meetings', 'module', 90, 0),
+('733d1c15-afdd-1556-8b7f-66a4972ef108', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'jjwg_Areas', 'module', 90, 0),
+('73722869-e133-7687-6a28-66a497a667f0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOS_Product_Categories', 'module', 90, 0),
+('73f1a7c8-be0f-32f1-a7da-66a497129f20', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Cases', 'module', 90, 0),
+('742467e2-f08d-0409-dd98-66a49720ae18', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AM_ProjectTemplates', 'module', 89, 0),
+('74790c91-453a-1669-9777-66a49748112b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'ExternalOAuthProvider', 'module', 90, 0),
+('7582bab0-4397-0c8a-9164-66a4979c9a34', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOW_WorkFlow', 'module', 90, 0),
+('762ba8b9-d7da-b60d-886e-66a497bde68e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOS_Product_Categories', 'module', 90, 0),
+('769679c0-1c96-ecc6-a3df-66a497f11f69', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Meetings', 'module', 90, 0),
+('77237707-8595-d505-5b6b-66a497a86a0a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Cases', 'module', 90, 0),
+('77c451cb-0bcd-5d3c-6a8c-66a49743e631', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AM_ProjectTemplates', 'module', 90, 0),
+('783237b4-da57-eb9b-1203-66a497aaed33', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'jjwg_Areas', 'module', 90, 0),
+('79f82fce-629a-16f5-28f9-66a497faaaee', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOS_Product_Categories', 'module', 90, 0),
+('7a9b9dbd-06a5-e135-3c51-66a49793b69b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Cases', 'module', 90, 0),
+('7acf481f-25eb-c7f2-bd2c-66a49786a350', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Meetings', 'module', 90, 0),
+('7ad005cf-0966-314a-af73-66a4974672c9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOW_WorkFlow', 'module', 90, 0),
+('7b5f5d3a-3655-39c3-75b3-66a4979c62be', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AM_ProjectTemplates', 'module', 90, 0),
+('7cbf56a3-c3e4-0fdb-2dda-66a497e46397', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOS_Product_Categories', 'module', 90, 0),
+('7dc8dffc-79cd-9c59-7295-66a497eec614', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'jjwg_Areas', 'module', 90, 0),
+('7dfd32c5-e550-0b06-4573-66a497dd6d74', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'SurveyResponses', 'module', 89, 0),
+('7eb16c0f-384b-1923-f855-66a4978f586c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Meetings', 'module', 90, 0),
+('7f85d46c-881d-8ffe-d471-66a497339293', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOS_Product_Categories', 'module', 90, 0),
+('7fb31b0b-ad51-f9cb-335a-66a4973f49c4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AM_ProjectTemplates', 'module', 90, 0),
+('80d1bbd2-5505-a7c2-07ff-66a49775040f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'OutboundEmailAccounts', 'module', 89, 0),
+('81c40e4d-9868-8562-a456-66a497aa3b7f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Calls', 'module', 89, 0),
+('81f22042-7be1-99ea-1317-66a497b24571', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'SurveyResponses', 'module', 90, 0),
+('82344ab7-09c1-6e37-f626-66a497f0a533', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'jjwg_Areas', 'module', 90, 0),
+('828262a2-a4ff-54a4-d891-66a497d979a5', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Meetings', 'module', 90, 0),
+('83ec22e8-341f-48d0-8a41-66a497a4c971', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'FP_events', 'module', 89, 0),
+('83fcbf38-de21-7ee2-5a67-66a4970bff97', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AM_ProjectTemplates', 'module', 90, 0),
+('84db70b9-f614-1f1c-6c73-66a497ba6041', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'OutboundEmailAccounts', 'module', 90, 0),
+('851c0656-76b0-5c66-b85f-66a497728d54', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Accounts', 'module', 90, 0),
+('85226f13-8320-9ad2-a845-66a497c0c52d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'SurveyResponses', 'module', 90, 0),
+('868f847b-be25-73e6-9ad5-66a497225c22', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'jjwg_Areas', 'module', 90, 0),
+('86ca30ad-1766-b21b-8b90-66a49761bbe6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'FP_events', 'module', 90, 0),
+('87fe74c6-537c-b2c1-60e5-66a4979a1715', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'SurveyResponses', 'module', 90, 0),
+('88648e9a-df8f-013b-a946-66a49795b110', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'OutboundEmailAccounts', 'module', 90, 0),
+('88960589-b9c4-30fc-7101-66a497d66b50', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOS_Invoices', 'module', 90, 0),
+('88a0e6b4-ac3c-1b0e-f9a0-66a49796ccdd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AM_ProjectTemplates', 'module', 90, 0),
+('890fe2e1-4378-5502-3d97-66a497ca5008', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'FP_events', 'module', 90, 0),
+('8ad44e11-c826-fcbd-11cb-66a497d3c61e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'jjwg_Areas', 'module', 90, 0),
+('8b7256ef-3113-1ae4-3e61-66a49745f95b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'OutboundEmailAccounts', 'module', 90, 0),
+('8b776e3b-1b6b-bbca-19a4-66a497ad675b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'FP_events', 'module', 90, 0),
+('8bb3e016-d15f-d0fb-fac4-66a49771df90', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'SurveyResponses', 'module', 90, 0),
+('8c470311-6ecf-46bf-375b-66a49783498a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AM_ProjectTemplates', 'module', 90, 0),
+('8dd43961-ca7c-556f-f8cc-66a49725ab1b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'FP_events', 'module', 90, 0),
+('8ec6325a-c345-9ff0-a015-66a497b8813e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'SurveyResponses', 'module', 90, 0),
+('8f0784f0-14b8-2259-3d44-66a497d38cce', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'OutboundEmailAccounts', 'module', 90, 0),
+('8fa547d1-799b-fd8e-60f9-66a497c65588', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'SurveyQuestionOptions', 'module', 89, 0),
+('90101bad-f3c4-e5c1-730e-66a4979c02bc', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'jjwg_Areas', 'module', 90, 0),
+('91110b3f-778d-b696-964c-66a4976e05e4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'InboundEmail', 'module', 89, 0),
+('91e520b4-5045-cc1c-2d77-66a49776664d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AM_ProjectTemplates', 'module', 90, 0),
+('9247382b-1425-c15c-c3d8-66a497dcd7c9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'OutboundEmailAccounts', 'module', 90, 0),
+('92e8fe13-4b4e-3937-2f96-66a497d7bee2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'FP_events', 'module', 90, 0),
+('93a804bd-2814-d650-2bad-66a4973e97d4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'InboundEmail', 'module', 90, 0),
+('93b1e685-9d35-42b3-817c-66a4971dc1e7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'SurveyResponses', 'module', 90, 0),
+('9520df69-0f0a-4d11-535a-66a4973e026e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'SurveyQuestionOptions', 'module', 90, 0),
+('95889b20-ff33-c31e-c244-66a497097921', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Campaigns', 'module', 89, 0),
+('9654cb60-d0ec-c125-b7ef-66a497efb3b5', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOS_Products', 'module', 89, 0),
+('9654eab4-67b9-a80c-5561-66a497885407', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'FP_events', 'module', 90, 0),
+('9738092a-4fee-d5d6-4796-66a4972393f4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'OutboundEmailAccounts', 'module', 90, 0),
+('97398076-0d20-bd61-c746-66a497109dcb', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'InboundEmail', 'module', 90, 0),
+('984c46f1-fa69-45e7-9810-66a49717be6c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Campaigns', 'module', 90, 0),
+('989e7bc2-7253-f7aa-7e81-66a497ba4cfe', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'SurveyResponses', 'module', 90, 0),
+('9907fd64-d9a1-2a67-ab71-66a497ab67cc', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'FP_events', 'module', 90, 0),
+('99673bf5-c18f-f88c-6706-66a497d39c57', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOS_Products', 'module', 90, 0),
+('9a4d6fce-9021-da8a-34d6-66a4971a77d9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'EmailTemplates', 'module', 89, 0),
+('9a59f7e4-91b4-2d2e-d07a-66a497c9b461', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'InboundEmail', 'module', 90, 0),
+('9a7120ec-371c-96d2-5ba8-66a4972a1eb8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'SurveyQuestionOptions', 'module', 90, 0),
+('9acbf9b3-e942-358f-73a8-66a49745cb4b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOW_Processed', 'module', 89, 0),
+('9bcdbd53-f079-8bbd-04c3-66a497928340', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'OutboundEmailAccounts', 'module', 90, 0),
+('9bebbbbe-5f8f-0bc2-e259-66a4979bb517', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Campaigns', 'module', 90, 0),
+('9c8cc7bc-28c0-ff1b-c410-66a497dc112f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOS_Products', 'module', 90, 0),
+('9ce281a1-2b1f-20ad-11d9-66a4970d4396', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Tasks', 'module', 89, 0),
+('9d97d58b-46ef-35a0-aa66-66a4977dd62d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOR_Scheduled_Reports', 'module', 89, 0),
+('9df96f77-4bc6-e9ac-e426-66a497b5f4e8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOW_Processed', 'module', 90, 0),
+('9dfa8fa5-5813-461d-ffd3-66a497854e9d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'InboundEmail', 'module', 90, 0),
+('9e024b94-0f88-3baa-872b-66a49792d6d1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'EmailTemplates', 'module', 90, 0),
+('9e4e299a-747f-560f-b823-66a497274233', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'SurveyQuestionOptions', 'module', 90, 0),
+('9f512f57-de42-4101-c188-66a49773c20b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Campaigns', 'module', 90, 0),
+('9fb99049-73c9-b93a-3969-66a497464d42', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOS_Products', 'module', 90, 0),
+('9ff2b34f-35ec-cf10-e538-66a49739e727', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Tasks', 'module', 90, 0),
+('a01e3109-35b4-3643-372f-66a497be5e0c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOR_Scheduled_Reports', 'module', 90, 0),
+('a09f9b17-36e1-7489-314a-66a497a4355b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOW_Processed', 'module', 90, 0),
+('a1095f8c-4842-7fa6-df22-66a4970b2722', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Bugs', 'module', 89, 0),
+('a1a960da-6533-d1d2-dac4-66a4979080f6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'InboundEmail', 'module', 90, 0),
+('a1b1db28-6f0a-327d-90b7-66a497c2fe64', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'EmailTemplates', 'module', 90, 0),
+('a20e3ffd-a38c-9cdb-eb04-66a497331bbb', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'SurveyQuestionOptions', 'module', 90, 0),
+('a2d14443-4ab1-4c65-ff7a-66a49782fd77', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Campaigns', 'module', 90, 0),
+('a2d570e7-470c-26e6-f97c-66a4973534d0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOS_Products', 'module', 90, 0),
+('a362babe-5ed2-0c8c-a617-66a497b0ea2e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOR_Scheduled_Reports', 'module', 90, 0),
+('a3776630-12fd-36f3-fabb-66a497a77846', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Tasks', 'module', 90, 0),
+('a3da9c54-a8b3-f01f-b974-66a4970b5da6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Bugs', 'module', 90, 0),
+('a42769c1-105e-b35c-ac61-66a497f15851', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOW_Processed', 'module', 90, 0),
+('a4fd4f0b-a9cc-70c0-2e13-66a497db67e3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'EmailTemplates', 'module', 90, 0),
+('a544647b-1284-150c-b8ba-66a497680571', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'InboundEmail', 'module', 90, 0),
+('a5e9a9b8-8172-d093-d600-66a497aac616', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'SurveyQuestionOptions', 'module', 90, 0),
+('a5ed5c5e-9d07-2a0e-54d1-66a4977ffe9c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOS_Products', 'module', 90, 0),
+('a66a03ac-ea71-d429-e718-66a4973316e0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Calls_Reschedule', 'module', 90, 0),
+('a6938c2f-84cb-9fd3-e468-66a497fc2749', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOR_Scheduled_Reports', 'module', 90, 0),
+('a6f614a8-6434-1af7-5caf-66a497959db8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Campaigns', 'module', 90, 0),
+('a7722545-33a9-f593-6eef-66a497317e47', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Tasks', 'module', 90, 0),
+('a7f802f6-7224-ec46-649c-66a49708d8bf', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Bugs', 'module', 90, 0),
+('a840d6dd-4804-7ec8-148d-66a4977415fa', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOW_Processed', 'module', 90, 0),
+('a8639998-86c5-94ca-5359-66a497276954', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOS_Products', 'module', 90, 0),
+('a9074fcf-1c41-1ae9-4e93-66a497fcb2cf', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'InboundEmail', 'module', 90, 0),
+('a9727217-ccd2-67ca-bab2-66a4970d0916', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOR_Scheduled_Reports', 'module', 90, 0),
+('a9e8a4f6-a45e-efc9-8a32-66a49796052a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'SurveyQuestionOptions', 'module', 90, 0),
+('aa800eb8-67af-7211-5b69-66a497b3f827', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOK_Knowledge_Base_Categories', 'module', 90, 0),
+('aac11bbb-0103-8ade-8e4d-66a49780d1be', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'EmailTemplates', 'module', 90, 0),
+('aaf89da9-c796-9009-dbb6-66a497d5a54e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Tasks', 'module', 90, 0),
+('aafe4f7d-8928-8bff-b0fc-66a49710eaa9', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Campaigns', 'module', 90, 0),
+('ab113df4-a0b3-2ab6-eaaf-66a497beddc5', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOS_Products', 'module', 90, 0),
+('ab75084a-3686-acd0-bace-66a497e1a958', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Bugs', 'module', 90, 0),
+('ac21fc9b-814a-1709-744f-66a49714dcd5', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOR_Scheduled_Reports', 'module', 90, 0),
+('ac76ab2b-3801-557b-5b44-66a4970977e2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOW_Processed', 'module', 90, 0),
+('adfa4f7e-f9f9-2479-b3f5-66a497b469b6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'SurveyQuestionOptions', 'module', 90, 0),
+('ae3e0ab6-924b-e10d-644d-66a49785c374', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOS_Invoices', 'module', 90, 0),
+('ae3fa203-9bed-24d9-1a4b-66a497f80b27', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'FP_Event_Locations', 'module', 89, 0),
+('ae713be4-82b0-09f4-664f-66a497a8037b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Tasks', 'module', 90, 0),
+('aeb33500-fe9e-3642-0c73-66a4973d1ac6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Campaigns', 'module', 90, 0),
+('af1312ad-4764-298a-01eb-66a497d1138b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Bugs', 'module', 90, 0),
+('af15e03a-6e40-a60a-61a6-66a4977c7aec', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOR_Scheduled_Reports', 'module', 90, 0),
+('af24987e-93e1-3a17-7524-66a497dbc034', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Contacts', 'module', 89, 0),
+('af766b43-415a-8f6d-c66b-66a4975151e7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'EmailTemplates', 'module', 90, 0),
+('af8f5d8f-7a68-2cd2-0938-66a497e169d4', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'jjwg_Address_Cache', 'module', 89, 0),
+('b08c345b-45a0-34e7-99a9-66a49763210b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOW_Processed', 'module', 90, 0),
+('b107e990-dff5-bb17-92ad-66a497588afa', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'FP_Event_Locations', 'module', 90, 0),
+('b1a10946-47a0-1662-4a58-66a49794bf52', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Calls', 'module', 90, 0),
+('b1d57df1-17b8-66b1-dfce-66a497fe9624', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Tasks', 'module', 90, 0),
+('b271fcf4-59f4-a5db-d9d4-66a4977d5d8c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Contacts', 'module', 90, 0),
+('b27de0a5-d964-e65d-dbc3-66a497f02410', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Bugs', 'module', 90, 0),
+('b2ee00ed-2f88-4c1b-9e07-66a497019b80', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AM_TaskTemplates', 'module', 89, 0),
+('b3317c23-ff93-03ee-58b8-66a497edd0e8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOR_Scheduled_Reports', 'module', 90, 0),
+('b3b42083-e460-8193-5227-66a4974992af', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'FP_Event_Locations', 'module', 90, 0),
+('b3d6e08d-1923-69cd-59fd-66a4979a4806', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'EmailTemplates', 'module', 90, 0),
+('b3fb8d8e-1b2b-4df8-e93e-66a49749b800', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'jjwg_Address_Cache', 'module', 90, 0),
+('b54d2e85-ff8b-b43c-8feb-66a4973ef5b3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOW_Processed', 'module', 90, 0),
+('b5657bb4-64e8-3cc9-7f1c-66a4975ec323', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Contacts', 'module', 90, 0),
+('b5803a34-c057-39ec-f2c8-66a4970a7f36', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Bugs', 'module', 90, 0),
+('b594987c-fc0a-3daa-6161-66a497e13d59', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Tasks', 'module', 90, 0),
+('b70ea1cd-30ff-955e-24a5-66a4974bd42d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AM_TaskTemplates', 'module', 90, 0),
+('b781b7f2-7319-1e67-e7a9-66a497a9f061', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'FP_Event_Locations', 'module', 90, 0),
+('b808d104-15c5-d070-94f3-66a497d4ba9f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Bugs', 'module', 90, 0),
+('b839feea-84a6-468c-15cd-66a497abf8c6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Contacts', 'module', 90, 0),
+('b83c7bc4-ca44-783a-ca56-66a497d50628', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'jjwg_Address_Cache', 'module', 90, 0),
+('b83eaa2a-273f-a7f8-6633-66a4970d9359', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'EmailTemplates', 'module', 90, 0),
+('ba706eaf-a4c9-f0ab-f4f9-66a4971c0ded', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'ExternalOAuthConnection', 'module', 89, 0),
+('bab3c3e8-066a-21f5-9016-66a497851494', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'FP_Event_Locations', 'module', 90, 0);
+INSERT INTO `acl_actions` (`id`, `date_entered`, `date_modified`, `modified_user_id`, `created_by`, `name`, `category`, `acltype`, `aclaccess`, `deleted`) VALUES
+('bb322836-5555-9fee-952a-66a4977d8672', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Contacts', 'module', 90, 0),
+('bbd2e3a9-87ef-621a-4e4d-66a4976e32d6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AM_TaskTemplates', 'module', 90, 0),
+('bcfb3b65-50da-3f76-cd19-66a497385c12', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'jjwg_Address_Cache', 'module', 90, 0),
+('bd38d665-412f-14f3-4aa1-66a4972735c7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Surveys', 'module', 89, 0),
+('bdc3b566-5a28-b44e-2c3f-66a497eba562', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'ExternalOAuthConnection', 'module', 90, 0),
+('beb58993-2687-9491-7c5d-66a4973c4329', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Contacts', 'module', 90, 0),
+('bedb7e76-b91e-dd0a-5429-66a497074276', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'FP_Event_Locations', 'module', 90, 0),
+('c027e822-e6ce-e737-899f-66a497265174', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AM_TaskTemplates', 'module', 90, 0),
+('c11901b7-efd1-1c9f-37aa-66a49782afe2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'SurveyQuestionResponses', 'module', 89, 0),
+('c15c1436-b3e0-669b-b4f1-66a4975b25fc', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Surveys', 'module', 90, 0),
+('c20ef726-cded-48e1-63ca-66a497d2a4d8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Contacts', 'module', 90, 0),
+('c21684aa-79ea-2dad-6e2d-66a497ab7225', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'jjwg_Address_Cache', 'module', 90, 0),
+('c26be173-0bb2-041e-2324-66a497b90c91', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'FP_Event_Locations', 'module', 90, 0),
+('c26d7cc0-1b87-fec2-611d-66a497a2b845', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'ExternalOAuthConnection', 'module', 90, 0),
+('c2b3aeeb-d6f5-b501-622e-66a497579a55', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOS_Contracts', 'module', 89, 0),
+('c33f005f-9e57-cf7e-e41d-66a49717170a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Accounts', 'module', 90, 0),
+('c47ff576-3750-77fd-1040-66a4977c2995', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AM_TaskTemplates', 'module', 90, 0),
+('c5042801-d986-d178-ba47-66a4977a4d8f', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Contacts', 'module', 90, 0),
+('c55913a0-e0cf-1b4f-d7af-66a4970216a3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Surveys', 'module', 90, 0),
+('c5759c15-06b3-5d3c-9728-66a497765416', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'FP_Event_Locations', 'module', 90, 0),
+('c60fa8d5-7406-b94f-fbb8-66a49751dc55', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOS_Contracts', 'module', 90, 0),
+('c67281a5-7353-7d18-76fa-66a4976b10ea', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'jjwg_Address_Cache', 'module', 90, 0),
+('c6f90944-ce8b-02a4-765d-66a497f6a18b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'ExternalOAuthProvider', 'module', 90, 0),
+('c743f394-145c-d480-75ba-66a49743e75b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'ExternalOAuthConnection', 'module', 90, 0),
+('c8c4229d-5bc7-b1ae-4d14-66a4979f5790', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AM_TaskTemplates', 'module', 90, 0),
+('c9afc8db-c1a2-0a11-cb3a-66a497aa654a', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Surveys', 'module', 90, 0),
+('c9e75995-85bc-c21b-976b-66a49790f8e1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOS_Contracts', 'module', 90, 0),
+('ca5d0ac4-12e8-2981-0b67-66a4975042f8', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'jjwg_Address_Cache', 'module', 90, 0),
+('cbac62dd-9a33-0486-5a40-66a497c8313b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Notes', 'module', 89, 0),
+('cbe41b26-c239-72e6-32b3-66a4975e1408', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'ExternalOAuthConnection', 'module', 90, 0),
+('ccd4b990-eadb-b297-1b12-66a497115392', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AM_TaskTemplates', 'module', 90, 0),
+('cd9eabf6-8d04-7de4-aebf-66a497372ddd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOS_Contracts', 'module', 90, 0),
+('ce881f0f-fdc6-e296-7c7b-66a49783ec42', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Surveys', 'module', 90, 0),
+('cec2f3d5-fa6d-ea6e-169a-66a49738b91d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'jjwg_Address_Cache', 'module', 90, 0),
+('ceec0d6e-cfb3-9195-1e34-66a49777b031', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Notes', 'module', 90, 0),
+('d0553114-dc9d-25c0-9847-66a4971be9c3', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'ExternalOAuthConnection', 'module', 90, 0),
+('d05812a1-6166-6b0c-2f8b-66a49713831e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOS_Contracts', 'module', 90, 0),
+('d0fd09a5-fc55-a9a5-20a9-66a4976796d2', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AM_TaskTemplates', 'module', 90, 0),
+('d214010f-f87b-56cd-d32d-66a497db769c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Notes', 'module', 90, 0),
+('d2b170bb-f2a9-0cd7-0498-66a4973a701e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Surveys', 'module', 90, 0),
+('d2ea01b2-d986-0959-ae26-66a497761603', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOS_Invoices', 'module', 90, 0),
+('d2ebe104-7d53-f4a6-b52c-66a49782cac6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOS_Contracts', 'module', 90, 0),
+('d4d8859b-331c-aa5d-5a55-66a4973b12b7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Notes', 'module', 90, 0),
+('d52c91b4-aec0-59a4-05c8-66a497a51135', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'ExternalOAuthConnection', 'module', 90, 0),
+('d588221b-4ba8-811a-53c9-66a497f0c7bc', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOS_Contracts', 'module', 90, 0),
+('d6e3007b-01ca-bb57-4f81-66a49791cb08', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Surveys', 'module', 90, 0),
+('d6e312a8-9334-2a9d-dd11-66a4971baa6d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'ProspectLists', 'module', 89, 0),
+('d8431375-218b-0b9a-0da1-66a497464f82', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOS_Contracts', 'module', 90, 0),
+('d84575d7-73d8-1b4e-dbe1-66a4976e5b48', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'jjwg_Maps', 'module', 89, 0),
+('d86630db-a2bf-8fbb-1c4e-66a49708cc5d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Notes', 'module', 90, 0),
+('d8b90ee9-bef9-0610-be39-66a497a1efbb', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Calls', 'module', 90, 0),
+('d9b06589-d9e6-d13d-92c9-66a497918715', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'ExternalOAuthConnection', 'module', 90, 0),
+('da44c2c2-77c9-9ac4-c8ef-66a4976d1b10', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'ProspectLists', 'module', 90, 0),
+('da9e8b7a-c2b2-a573-8db4-66a497338c78', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Surveys', 'module', 90, 0),
+('dc14106a-a5e8-b4f7-b85f-66a497ec1f92', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Users', 'module', 89, 0),
+('dc4d4e37-0821-852b-7a6a-66a49788a859', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Notes', 'module', 90, 0),
+('dd734567-daae-dfb5-7ab6-66a4976fd22e', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'jjwg_Maps', 'module', 90, 0),
+('dd7cbf1c-58c6-0eef-8f1e-66a4974b145b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'ProspectLists', 'module', 90, 0),
+('dec259f2-edd3-f5eb-c7f5-66a49772b040', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'AOP_Case_Events', 'module', 89, 0),
+('df7baee8-2b90-bd31-1a19-66a4974b325c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Notes', 'module', 90, 0),
+('df887b6c-57c5-f0a4-8b09-66a49734eb88', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'Users', 'module', 90, 0),
+('e0c71670-ef8b-575a-c7b0-66a497044186', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'ProspectLists', 'module', 90, 0),
+('e1391012-4104-ba9d-2e62-66a497fad463', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'jjwg_Maps', 'module', 90, 0),
+('e31623b4-e69d-b77f-def4-66a49772d875', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'view', 'AOP_Case_Events', 'module', 90, 0),
+('e3520bd9-3307-b102-4f37-66a49788dd4d', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'Users', 'module', 90, 0),
+('e39c9367-f6d1-429d-73bd-66a497cd3bc0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Notes', 'module', 90, 0),
+('e41d84df-e98b-57b1-8f8d-66a497ef2eb7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'ProspectLists', 'module', 90, 0),
+('e51436e4-515b-8767-0885-66a497a3a0fc', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'jjwg_Maps', 'module', 90, 0),
+('e59cd462-a27b-ee40-c31e-66a497e1b103', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'list', 'AOP_Case_Events', 'module', 90, 0),
+('e6988501-ab19-cd70-be93-66a4974e98f1', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'Users', 'module', 90, 0),
+('e821e85d-be42-89c1-6ba7-66a497ca61bd', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'edit', 'AOP_Case_Events', 'module', 90, 0),
+('e87c01d7-6117-5c7d-2bae-66a497c8004c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'ProspectLists', 'module', 90, 0),
+('e9817eaa-049b-5b6d-f49c-66a49703ec4b', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'jjwg_Maps', 'module', 90, 0),
+('e98bd92d-a0ec-a335-b4bf-66a4972f9f5c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'Users', 'module', 90, 0),
+('ea88e7c1-e982-e6f6-9259-66a497b0fe71', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'delete', 'AOP_Case_Events', 'module', 90, 0),
+('ebf0af19-edbf-9401-be60-66a497319c6c', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'ProspectLists', 'module', 90, 0),
+('ec50a2a7-079c-1a15-abbd-66a49711eddc', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'Users', 'module', 90, 0),
+('ed770e52-fdad-e395-55e1-66a4978f6572', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOP_Case_Events', 'module', 90, 0),
+('ee463c00-b238-0544-f342-66a4973d6ab7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'jjwg_Maps', 'module', 90, 0),
+('ef45caf7-a120-5825-33e0-66a49793e232', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'ProspectLists', 'module', 90, 0),
+('efd22602-3de8-0d3b-b2f7-66a497523442', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'Users', 'module', 90, 0),
+('eff107dc-7fdc-4a07-cc2a-66a4979253b0', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Calls_Reschedule', 'module', 89, 0),
+('f0550757-617c-ad00-fc7f-66a497c00eba', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'ExternalOAuthProvider', 'module', 89, 0),
+('f07447d5-e20e-bdf5-4a54-66a497ea5aa5', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'AOP_Case_Events', 'module', 90, 0),
+('f0785d20-b44e-9db3-d8f6-66a49732bac7', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'access', 'Accounts', 'module', 89, 0),
+('f2b78462-d42f-7ef7-da6f-66a497669e04', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'export', 'jjwg_Maps', 'module', 90, 0),
+('f3920ba0-2b4e-a0e9-39d4-66a497c5f7f6', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'AOP_Case_Events', 'module', 90, 0),
+('f3aace84-850e-ffcc-e5c9-66a49757a577', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'massupdate', 'Users', 'module', 90, 0),
+('fd6f0e0d-c0b5-c30f-4fac-66a497583773', '2024-07-27 06:45:22', '2024-07-27 06:45:22', '1', '', 'import', 'AOS_Invoices', 'module', 90, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `acl_roles`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `acl_roles` (
+  `id` char(36) NOT NULL,
+  `date_entered` datetime DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `modified_user_id` char(36) DEFAULT NULL,
+  `created_by` char(36) DEFAULT NULL,
+  `name` varchar(150) DEFAULT NULL,
+  `description` text,
+  `deleted` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `acl_roles`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `acl_roles_actions`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `acl_roles_actions` (
+  `id` varchar(36) NOT NULL,
+  `role_id` varchar(36) DEFAULT NULL,
+  `action_id` varchar(36) DEFAULT NULL,
+  `access_override` int DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `acl_roles_actions`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `acl_roles_users`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `acl_roles_users` (
+  `id` varchar(36) NOT NULL,
+  `role_id` varchar(36) DEFAULT NULL,
+  `user_id` varchar(36) DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `deleted` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `acl_roles_users`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `address_book`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `address_book` (
+  `assigned_user_id` char(36) NOT NULL,
+  `bean` varchar(50) DEFAULT NULL,
+  `bean_id` char(36) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `address_book`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `alerts`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `alerts` (
+  `id` char(36) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `date_entered` datetime DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `modified_user_id` char(36) DEFAULT NULL,
+  `created_by` char(36) DEFAULT NULL,
+  `description` text,
+  `deleted` tinyint(1) DEFAULT '0',
+  `assigned_user_id` char(36) DEFAULT NULL,
+  `is_read` tinyint(1) DEFAULT NULL,
+  `target_module` varchar(255) DEFAULT NULL,
+  `type` varchar(255) DEFAULT NULL,
+  `url_redirect` varchar(255) DEFAULT NULL,
+  `reminder_id` char(36) DEFAULT NULL,
+  `snooze` datetime DEFAULT NULL,
+  `date_start` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `alerts`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `am_projecttemplates`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `am_projecttemplates` (
+  `id` char(36) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `date_entered` datetime DEFAULT NULL,
+  `date_modified` datetime DEFAULT NULL,
+  `modified_user_id` char(36) DEFAULT NULL,
+  `created_by` char(36) DEFAULT NULL,
+  `description` text,
+  `deleted` tinyint(1) DEFAULT '0',
+  `assigned_user_id` char(36) DEFAULT NULL,
+  `status` varchar(100) DEFAULT 'Draft',
+  `priority` varchar(100) DEFAULT 'High',
+  `override_business_hours` tinyint(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `am_projecttemplates`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `am_projecttemplates_audit`
+--
+-- Creation: Jul 27, 2024 at 06:45 AM
+--
+
+CREATE TABLE `am_projecttemplates_audit` (
+  `id` char(36) NOT NULL,
+  `parent_id` char(36) NOT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `created_by` varchar(36) DEFAULT NULL,
+  `field_name` varchar(100) DEFAULT NULL,
+  `data_type` varchar(100) DEFAULT NULL,
+  `before_value_string` varchar(255) DEFAULT NULL,
+  `after_value_string` varchar(255) DEFAULT NULL,
+  `before_value_text` text,
+  `after_value_text` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- RELATIONSHIPS FOR TABLE `am_projecttemplates_audit`:
+--
